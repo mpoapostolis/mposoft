@@ -5,12 +5,17 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mposoft.com', // Replace with actual domain if different, but required for sitemap
+  // Replace with actual domain if different, but required for sitemap
+  site: 'https://mposoft.com',
+
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  adapter: cloudflare()
 });
