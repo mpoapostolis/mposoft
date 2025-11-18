@@ -1,0 +1,197 @@
+---
+const NAV_LINKS = [
+    { name: "Services", href: "#services" },
+    { name: "Work", href: "#portfolio" },
+    { name: "Contact", href: "#contact" },
+];
+---
+
+<header
+    class="fixed top-6 left-0 right-0 z-50 flex justify-center transition-all duration-500 px-4"
+>
+    <div
+        id="header-container"
+        class="flex items-center justify-between px-6 py-3 bg-[#111111]/90 backdrop-blur-md border border-white/10 rounded-full transition-all duration-500 shadow-2xl w-full md:w-[80%]"
+    >
+        <a
+            href="#"
+            class="hover:opacity-80 transition-opacity"
+            aria-label="Go to homepage"
+        >
+            <div
+                class="flex items-center gap-3 group cursor-pointer"
+                aria-label="mposoft Home"
+            >
+                {/* Minimalist Geometric Logo */}
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <rect x="2" y="2" width="9" height="9" fill="white"></rect>
+                    <rect
+                        x="13"
+                        y="2"
+                        width="9"
+                        height="9"
+                        stroke="white"
+                        stroke-width="2"></rect>
+                    <rect
+                        x="2"
+                        y="13"
+                        width="9"
+                        height="9"
+                        stroke="white"
+                        stroke-width="2"></rect>
+                    <circle cx="17.5" cy="17.5" r="4.5" fill="#ea7600"></circle>
+                    {/* Blender Orange Accent */}
+                </svg>
+                <span class="font-bold tracking-tighter text-lg text-white">
+                    mposoft
+                </span>
+            </div>
+        </a>
+
+        {/* Desktop Nav - Semantic Semantic Structure for SEO */}
+        <nav class="hidden md:block">
+            <ul class="flex items-center gap-8">
+                {
+                    NAV_LINKS.map((link) => (
+                        <li>
+                            <a
+                                href={link.href}
+                                class="text-[11px] uppercase tracking-[0.15em] font-semibold text-gray-400 hover:text-white transition-colors"
+                            >
+                                {link.name}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <button
+            id="menu-button"
+            class="md:hidden text-white p-1"
+            aria-label="Toggle menu"
+        >
+            <div class="space-y-1.5">
+                <span
+                    class="block w-6 h-0.5 bg-white transition-transform origin-center menu-line-1"
+                ></span>
+                <span
+                    class="block w-6 h-0.5 bg-white transition-opacity menu-line-2"
+                ></span>
+                <span
+                    class="block w-6 h-0.5 bg-white transition-transform origin-center menu-line-3"
+                ></span>
+            </div>
+        </button>
+
+        <a
+            href="#contact"
+            class="hidden md:flex items-center justify-center w-8 h-8 bg-white rounded-full group hover:scale-110 transition-transform"
+            aria-label="Contact Us"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                    points="7 7 17 7 17 17"></polyline></svg
+            >
+        </a>
+    </div>
+</header>
+
+{/* Fullscreen Mobile Menu */}
+<div
+    id="mobile-menu"
+    class="fixed inset-0 z-40 bg-black flex flex-col items-center justify-center transition-all duration-500 opacity-0 invisible pointer-events-none"
+>
+    <nav class="flex flex-col gap-6 text-center">
+        {
+            NAV_LINKS.map((link) => (
+                <a
+                    href={link.href}
+                    class="mobile-link text-5xl font-bold text-white tracking-tighter hover:text-[#ea7600] transition-colors"
+                >
+                    {link.name}
+                </a>
+            ))
+        }
+    </nav>
+</div>
+
+<script>
+    const headerContainer = document.getElementById("header-container");
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    const menuLine1 = document.querySelector(".menu-line-1");
+    const menuLine2 = document.querySelector(".menu-line-2");
+    const menuLine3 = document.querySelector(".menu-line-3");
+    let isMobileMenuOpen = false;
+
+    function toggleMenu() {
+        isMobileMenuOpen = !isMobileMenuOpen;
+        if (isMobileMenuOpen) {
+            mobileMenu?.classList.remove(
+                "opacity-0",
+                "invisible",
+                "pointer-events-none",
+            );
+            mobileMenu?.classList.add(
+                "opacity-100",
+                "visible",
+                "pointer-events-auto",
+            );
+
+            menuLine1?.classList.add("rotate-45", "translate-y-2");
+            menuLine2?.classList.add("opacity-0");
+            menuLine3?.classList.add("-rotate-45", "-translate-y-2");
+        } else {
+            mobileMenu?.classList.add(
+                "opacity-0",
+                "invisible",
+                "pointer-events-none",
+            );
+            mobileMenu?.classList.remove(
+                "opacity-100",
+                "visible",
+                "pointer-events-auto",
+            );
+
+            menuLine1?.classList.remove("rotate-45", "translate-y-2");
+            menuLine2?.classList.remove("opacity-0");
+            menuLine3?.classList.remove("-rotate-45", "-translate-y-2");
+        }
+    }
+
+    menuButton?.addEventListener("click", toggleMenu);
+
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (isMobileMenuOpen) toggleMenu();
+        });
+    });
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            headerContainer?.classList.remove("w-full", "md:w-[80%]");
+            headerContainer?.classList.add("w-[95%]", "md:w-[50%]");
+        } else {
+            headerContainer?.classList.add("w-full", "md:w-[80%]");
+            headerContainer?.classList.remove("w-[95%]", "md:w-[50%]");
+        }
+    });
+</script>

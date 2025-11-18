@@ -1,0 +1,104 @@
+---
+interface PortfolioItem {
+    id: number;
+    imageUrl: string;
+    category: string;
+    title: string;
+}
+
+const portfolioData: PortfolioItem[] = [
+    {
+        id: 1,
+        imageUrl:
+            "https://images.unsplash.com/photo-1617802690992-1ce56a3951eb?q=80&w=1200&auto=format&fit=crop",
+        category: "Automotive",
+        title: "Hyperion Configurator",
+    },
+    {
+        id: 2,
+        imageUrl:
+            "https://images.unsplash.com/photo-1622979135228-5b1ed3d2a403?q=80&w=1200&auto=format&fit=crop",
+        category: "Training",
+        title: "AeroSim VR",
+    },
+    {
+        id: 3,
+        imageUrl:
+            "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
+        category: "Architecture",
+        title: "Nexus Spaces",
+    },
+    {
+        id: 4,
+        imageUrl:
+            "https://images.unsplash.com/photo-1592478411213-61535fdd861d?q=80&w=1200&auto=format&fit=crop",
+        category: "Education",
+        title: "BioLab 3D",
+    },
+];
+---
+
+<section id="portfolio" class="py-40 bg-[#030303]">
+    <div class="container mx-auto px-6 md:px-12">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+            <h2
+                class="text-[13vw] md:text-8xl font-bold leading-[0.8] tracking-tighter text-white"
+            >
+                WORK.
+            </h2>
+            <a
+                href="#"
+                class="hidden md:block px-8 py-4 border border-white/10 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
+            >
+                View All Projects
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 gap-24">
+            {
+                portfolioData.map((item, idx) => (
+                    <div class="group cursor-pointer border-t border-white/10 pt-12">
+                        <div class="flex flex-col md:flex-row gap-12">
+                            <div class="md:w-1/3">
+                                <span class="block text-xs font-mono text-[#ea7600] mb-4">
+                                    0{idx + 1}
+                                </span>
+                                <h3 class="text-4xl md:text-5xl font-medium text-white mb-4">
+                                    {item.title}
+                                </h3>
+                                <p class="text-gray-500 text-sm uppercase tracking-widest">
+                                    {item.category}
+                                </p>
+                                <p class="mt-6 text-gray-400 leading-relaxed max-w-xs">
+                                    High-fidelity 3D implementation using
+                                    standard WebGL protocols and custom shaders
+                                    for immersive web experiences.
+                                </p>
+                            </div>
+                            <div class="md:w-2/3 overflow-hidden relative h-[60vh] bg-[#111]">
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent z-10 transition-colors duration-500" />
+                                <img
+                                    src={item.imageUrl}
+                                    alt={`3D Web Project: ${item.title} - ${item.category} Experience`}
+                                    loading="lazy"
+                                    width="1200"
+                                    height="800"
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-1000 ease-out"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="md:hidden mt-12 text-center">
+            <a
+                href="#"
+                class="inline-block px-8 py-4 border border-white/10 text-xs font-bold uppercase tracking-widest"
+            >
+                View All Projects
+            </a>
+        </div>
+    </div>
+</section>

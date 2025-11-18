@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: #030303;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Noise Overlay for Agency Feel */
+.bg-noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scanline effect */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 51;
+    opacity: 0.3;
+}
+
+/* BLENDER STYLE 3D OBJECT */
+.scene {
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.cube-wrapper {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotateCube 20s infinite linear;
+}
+
+/* Outer Cube */
+.cube {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+/* Inner Cube */
+.cube-inner {
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    transform-style: preserve-3d;
+    animation: rotateCube 10s infinite linear reverse;
+}
+
+.cube-face {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(234, 118, 0, 0.6);
+    /* Blender Orange */
+    background: rgba(234, 118, 0, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: visible;
+}
+
+.cube-face-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    backface-visibility: visible;
+}
+
+/* Vertices (Dots at corners) */
+.vertex {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ea7600;
+    /* Blender Orange */
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ea7600;
+}
+
+.v-tl {
+    top: -3px;
+    left: -3px;
+}
+
+.v-tr {
+    top: -3px;
+    right: -3px;
+}
+
+.v-bl {
+    bottom: -3px;
+    left: -3px;
+}
+
+.v-br {
+    bottom: -3px;
+    right: -3px;
+}
+
+/* Outer Face Transforms */
+.face-front {
+    transform: rotateY(0deg) translateZ(150px);
+}
+
+.face-right {
+    transform: rotateY(90deg) translateZ(150px);
+}
+
+.face-back {
+    transform: rotateY(180deg) translateZ(150px);
+}
+
+.face-left {
+    transform: rotateY(-90deg) translateZ(150px);
+}
+
+.face-top {
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+.face-bottom {
+    transform: rotateX(-90deg) translateZ(150px);
+}
+
+/* Inner Face Transforms (Size is 180px, so Z is 90px) */
+.face-inner-front {
+    transform: rotateY(0deg) translateZ(90px);
+}
+
+.face-inner-right {
+    transform: rotateY(90deg) translateZ(90px);
+}
+
+.face-inner-back {
+    transform: rotateY(180deg) translateZ(90px);
+}
+
+.face-inner-left {
+    transform: rotateY(-90deg) translateZ(90px);
+}
+
+.face-inner-top {
+    transform: rotateX(90deg) translateZ(90px);
+}
+
+.face-inner-bottom {
+    transform: rotateX(-90deg) translateZ(90px);
+}
+
+@keyframes rotateCube {
+    0% {
+        transform: rotateX(15deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateX(15deg) rotateY(360deg);
+    }
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: #ea7600;
+    color: white;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+</style>

@@ -1,0 +1,203 @@
+---
+
+---
+
+<section
+    class="relative min-h-screen flex flex-col justify-center pt-32 pb-20 bg-[#030303] overflow-hidden"
+>
+    {/* Background Grids simulating 3D viewport floor */}
+    <div
+        class="absolute inset-0 opacity-10"
+        style={{
+            backgroundImage:
+                "linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+            transform:
+                "perspective(500px) rotateX(60deg) translateY(100px) scale(2)",
+            transformOrigin: "center 80%",
+        }}
+    >
+    </div>
+
+    {/* Giant Background Typography */}
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none overflow-hidden"
+    >
+        <h1
+            class="text-[20vw] font-bold text-white/[0.02] tracking-tighter whitespace-nowrap animate-float"
+            style={{ animationDuration: "20s" }}
+        >
+            IMMERSIVE WEB
+        </h1>
+    </div>
+
+    <div class="container mx-auto px-6 md:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+            <div class="lg:w-3/5 z-20">
+                <div
+                    class="mb-8 inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
+                >
+                    <div
+                        class="w-2 h-2 bg-[#ea7600] rounded-full animate-pulse"
+                    >
+                    </div>
+                    <span
+                        class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-300"
+                        >Blender Integration v4.2</span
+                    >
+                </div>
+
+                <h1
+                    class="text-[13vw] lg:text-[7.5rem] leading-[0.85] font-bold tracking-tighter text-white mb-10 drop-shadow-2xl"
+                >
+                    DIGITAL <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600"
+                        >REALITY.</span
+                    >
+                </h1>
+
+                <p
+                    class="text-lg md:text-xl text-gray-400 max-w-lg leading-relaxed mb-12 border-l-2 border-[#ea7600] pl-6"
+                >
+                    We engineer high-fidelity 3D web experiences. <br />
+                    Directly from <span class="text-white font-bold"
+                        >Blender</span
+                    > to the Browser.
+                </p>
+
+                <div class="flex flex-wrap gap-6">
+                    <a
+                        href="#contact"
+                        class="relative overflow-hidden group bg-white text-black px-10 py-4 font-bold uppercase tracking-widest text-xs transition-all hover:pr-14"
+                    >
+                        <span class="relative z-10">Start Project</span>
+                        <div
+                            class="absolute inset-0 bg-[#ea7600] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
+                        >
+                        </div>
+                        <span
+                            class="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 text-white"
+                            >→</span
+                        >
+                        <span
+                            class="relative z-10 group-hover:text-white transition-colors duration-300"
+                        ></span>
+                    </a>
+                    <a
+                        href="#services"
+                        class="px-10 py-4 border border-white/20 text-white font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-colors duration-300"
+                    >
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+
+            {/* 3D Viewport Simulation */}
+            <div
+                class="lg:w-2/5 relative mt-20 lg:mt-0 flex justify-center items-center"
+            >
+                {/* Blender Gizmo Axis Simulation */}
+                <div class="absolute -top-10 -right-10 opacity-80">
+                    <div class="relative w-20 h-20">
+                        <div
+                            class="absolute bottom-0 left-0 w-px h-full bg-green-500/50"
+                        >
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 h-px w-full bg-red-500/50"
+                        >
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-px h-10 bg-blue-500/50 transform -rotate-45 origin-bottom-left"
+                        >
+                        </div>
+                        <div
+                            class="absolute top-0 -left-2 text-[8px] text-green-500 font-mono"
+                        >
+                            Y
+                        </div>
+                        <div
+                            class="absolute -bottom-2 right-0 text-[8px] text-red-500 font-mono"
+                        >
+                            X
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scene animate-float">
+                    <div class="cube-wrapper">
+                        {/* OUTER CUBE */}
+                        <div class="cube">
+                            <div class="cube-face face-front">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                            <div class="cube-face face-back">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                            <div class="cube-face face-right">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                            <div class="cube-face face-left">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                            <div class="cube-face face-top">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                            <div class="cube-face face-bottom">
+                                <div class="vertex v-tl"></div><div
+                                    class="vertex v-tr"
+                                >
+                                </div><div class="vertex v-bl"></div><div
+                                    class="vertex v-br"
+                                >
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* INNER CUBE (Complexity Layer) */}
+                        <div class="cube-inner">
+                            <div class="cube-face-inner face-inner-front"></div>
+                            <div class="cube-face-inner face-inner-back"></div>
+                            <div class="cube-face-inner face-inner-right"></div>
+                            <div class="cube-face-inner face-inner-left"></div>
+                            <div class="cube-face-inner face-inner-top"></div>
+                            <div class="cube-face-inner face-inner-bottom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
